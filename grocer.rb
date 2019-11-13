@@ -30,9 +30,7 @@ def consolidate_cart(cart)
   # REMEMBER: This returns a new Array that represents the cart. Don't merely
   # change `cart` (i.e. mutate) it. It's easier to return a new thing.
 
-   final_cart = []
-   cart_item = {}
-   
+  final_cart = []
 
   cart.each do |groceries|
     groceries.each do |key, value|
@@ -42,11 +40,11 @@ def consolidate_cart(cart)
 
         if scan_item_in_cart == nil
 
-          cart_item = {:item => groceries[:item],
+          scan_item_in_cart = {:item => groceries[:item],
                        :price => groceries[:price],
                        :clearance => groceries[:clearance],
                        :count => 1
-              final_cart.push(cart_item)
+              final_cart.push(scan_item_in_cart)
         else
             scan_item_in_cart[:count] += 1
         end
