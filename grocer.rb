@@ -41,13 +41,13 @@ def consolidate_cart(cart)
         scan_item_in_cart = find_item_by_name_in_collection(groceries[:item], final_cart)
 
         if scan_item_in_cart == nil
-          
+
           cart_item = {:item => groceries[:item],
                        :price => groceries[:price],
                        :clearance => groceries[:clearance],
                        :count => 1
               final_cart.push(cart_item)
-        else  
+        else
             scan_item_in_cart[:count] += 1
         end
 
