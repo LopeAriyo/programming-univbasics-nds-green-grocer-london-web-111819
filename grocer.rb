@@ -31,28 +31,24 @@ def consolidate_cart(cart)
   # change `cart` (i.e. mutate) it. It's easier to return a new thing.
 
    final_cart = []
-   scan_item_in_cart = {}
-   count = 0
+   cart_item = {}
+   
 
   cart.each do |groceries|
     groceries.each do |key, value|
       if key == :item
 
-        if find_item_by_name_in_collection(value, final_cart) == nil
-          count = 1
-          scan_item_in_cart = {:item => groceries[:item],
+        scan_item_in_cart = find_item_by_name_in_collection(groceries[:item], final_cart)
+
+        if scan_item_in_cart == nil
+          
+          cart_item = {:item => groceries[:item],
                        :price => groceries[:price],
                        :clearance => groceries[:clearance],
-                       :count => count}
-              final_cart.push(scan_item_in_cart)
-        else
-          count += 1
-
-          final_cart.each do |final_groceries|
-            final_groceries[:count] = count
-            #binding.pry
-          end
-
+                       :count => 1
+              final_cart.push(cart_item)
+        else  
+            scan_item_in_cart[:count] += 1
         end
 
       end
