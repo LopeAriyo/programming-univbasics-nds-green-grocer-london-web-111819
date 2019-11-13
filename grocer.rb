@@ -43,7 +43,8 @@ def consolidate_cart(cart)
           scan_item_in_cart = {:item => groceries[:item],
                        :price => groceries[:price],
                        :clearance => groceries[:clearance],
-                       :count => 1
+                       :count => 1}
+                       
               final_cart.push(scan_item_in_cart)
         else
             scan_item_in_cart[:count] += 1
