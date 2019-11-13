@@ -31,7 +31,7 @@ def consolidate_cart(cart)
   # change `cart` (i.e. mutate) it. It's easier to return a new thing.
 
    final_cart = []
-   items_on_checkout = {}
+   scan_item_in_cart = {}
    count = 0
 
   cart.each do |groceries|
@@ -40,11 +40,11 @@ def consolidate_cart(cart)
 
         if find_item_by_name_in_collection(value, final_cart) == nil
           count = 1
-          items_on_checkout = {:item => groceries[:item],
+          scan_item_in_cart = {:item => groceries[:item],
                        :price => groceries[:price],
                        :clearance => groceries[:clearance],
                        :count => count}
-              final_cart.push(items_on_checkout)
+              final_cart.push(scan_item_in_cart)
         else
           count += 1
 
